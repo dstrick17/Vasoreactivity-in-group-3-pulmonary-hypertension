@@ -3,17 +3,7 @@
 # Introduction - 
 ## In our study, explored how several variables impacted survival in patients with WHO group 3 pulmonary hypertension. This is a novel cohort of patients who underwent vasoreactivty testing with inhaled nitric oxide during their right heart catheterizations upon diagnsois.
 
-## Before running this script, ensure you have the following installed:
-
-- Python 3.x
-- pandas
-- lifelines
-- openpyxl (for reading Excel files)
-
-You can install the required packages using pip:
-
-```sh
-pip install pandas lifelines openpyxl
+## Before running this script, ensure you have the following installed: Python 3.x, pandas, lifelines, openpyxl (for reading Excel files). 
 
 ## We employed a two-stage statistical analysis to identify significant predictors of mortality. 
 
