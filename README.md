@@ -13,9 +13,8 @@
 
 ## We employed Kaplan-Meier survival analysis to better visualize mortality in this cohort.
 
-### kaplan.py - Kaplan-Meier curve for all patients in this cohort.
 
-### kaplan-delta-mpap.py and kaplan-delta-pvr.py - investigates the impact of changes in pulmonary vascular resistance (∆ PVR) as well as the change in mean pulmonary artery pressure (∆ mPAP ) after testing for vasoreactivity on survival outcomes within our dataset. Two distinct groups were then created based on the magnitude of change in PVR as well as change in mPAP. Kaplan-Meier estimators were then fitted to the data for each group to model survival probabilities over time. This allowed us to visualize the survival curves for both groups, providing insights into their respective survival trends. A log rank test was used to statistically compare the survival distributions between the two groups. 
+### kaplan-delta-mpap.py and kaplan-delta-pvr.py - investigates the impact of changes in pulmonary vascular resistance (∆ PVR) as well as the change in mean pulmonary artery pressure (∆ mPAP ) after testing for vasoreactivity on survival outcomes within our dataset. Two distinct groups were then created based on the median change in PVR as well as change in mPAP. Kaplan-Meier estimators were then fitted to the data for each group to model survival probabilities over time. This allowed us to visualize the survival curves for both groups, providing insights into their respective survival trends. A kaplan-meier curve of all patients was superimposed onto each graph to compare each subgroup to the total population. A log rank test was used to statistically compare the survival distributions between the two groups. 
 
 ## We conducted linear regressions to explore the relationship between parameters within our dataset. 
 
