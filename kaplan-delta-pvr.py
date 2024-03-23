@@ -20,10 +20,12 @@ df_low_delta_pvr = df[df['∆ PVR'] <= 1.2]
 df_high_delta_pvr = df[df['∆ PVR'] > 1.2]
 
 # Create Kaplan-Meier estimators for each group
-kmf_low_delta_pvr = KaplanMeierFitter()
-kmf_high_delta_pvr = KaplanMeierFitter()
+kmf = KaplanMeierFitter() # All patients
+kmf_low_delta_pvr = KaplanMeierFitter() # Low delta PVR
+kmf_high_delta_pvr = KaplanMeierFitter() # High delta PVR
 
 # Fit estimators to the data for each group
+kmf.fit(durations=df["Time in months"], event_observed=df["event_occurred"])
 kmf_low_delta_pvr.fit(durations=df_low_delta_pvr["Time in months"], event_observed=df_low_delta_pvr["event_occurred"], label='Reduction in PVR by ≤ 1.2 Wood units')
 kmf_high_delta_pvr.fit(durations=df_high_delta_pvr["Time in months"], event_observed=df_high_delta_pvr["event_occurred"], label='Reduction in PVR by > 1.2 Wood units')
 
@@ -34,6 +36,7 @@ results = logrank_test(durations_A=df_low_delta_pvr["Time in months"],
                        event_observed_B=df_high_delta_pvr["event_occurred"])
 
 # Plot the Kaplan-Meier curves for each group
+kmf.plot_survival_function(label=f'All Patients (n={len(df)})')
 kmf_low_delta_pvr.plot_survival_function(label=f'Reduction in PVR by ≤ 1.2 Wood units (n={len(df_low_delta_pvr)})')
 kmf_high_delta_pvr.plot_survival_function(label=f'Reduction in PVR by > 1.2 Wood units (n={len(df_high_delta_pvr)})')
 
@@ -44,7 +47,7 @@ plt.ylabel("Survival Probability")
 plt.legend()
 
 # Annotate the log-rank p-value on the plot
-plt.text(60, 0.5, f'Log-rank p-value: {results.p_value:.4f}', ha='left', va='center', color='red', fontsize=12)
+plt.text(100, 0.5, f'Log-rank p-value: {results.p_value:.4f}', ha='left', va='center', color='red', fontsize=12)
 
 # Show the plot
 plt.show()
